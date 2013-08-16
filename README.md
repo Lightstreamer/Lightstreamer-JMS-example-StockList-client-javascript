@@ -52,3 +52,4 @@ You can also simply start by opening the index.html file with your browser.
 # Lightstreamer Compatibility Notes #
 
 - Compatible with Lightstreamer JavaScript Client library version 6.0 or newer.
+- Compatible with Lightstreamer JMS Gateway Adapter since version 1.0 or newer.
