@@ -32,7 +32,7 @@ To set the data adapter name and the connection name look where the connection i
   });
 ```
 
-To access the demo from a web browser copy it somewhere under you root webserver directory. You can also add it to the standard Lightstreamer demo pages under "LightstreamerHome/pages/demos" directory and access it as: <i>http://<your lightstreamer http address>/demos/StockListDemo_JMS/</i>.
+To access the demo from a web browser copy it somewhere under you root webserver directory. You can also add it to the standard Lightstreamer demo pages under "LightstreamerHome/pages/demos" directory and access it as: <i>http://_your_lightstreamer_http_address_/demos/StockListDemo_JMS/</i>.
 
 You can also simply start by opening the index.html file with your browser.
 
@@ -45,8 +45,8 @@ You can also simply start by opening the index.html file with your browser.
 
 ## Similar demo clients that may interest you ##
 
-* To be add: [Lightstreamer JMS Gateway Chat Demo Client for JavaScript]()
-* To be add: [Lightstreamer JMS Gateway Portfolio Demo Client for JavaScript]()
+* [Lightstreamer JMS Gateway Chat Demo Client for JavaScript](https://github.com/Weswit/Lightstreamer-JMS-example-Chat-client-javascript)
+* [Lightstreamer JMS Gateway Portfolio Demo Client for JavaScript](https://github.com/Weswit/Lightstreamer-JMS-example-Portfolio-client-javascript)
 * [Lightstreamer StockList Demo Client for javascript](https://github.com/Weswit/Lightstreamer-example-StockList-client-javascript)
 
 # Lightstreamer Compatibility Notes #
