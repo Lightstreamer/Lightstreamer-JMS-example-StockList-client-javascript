@@ -41,7 +41,7 @@ You can also simply start by opening the index.html file with your browser.
 
 ## Lightstreamer back-end Service needed by these demo clients ##
 
-* To be add: [Lightstreamer JMS Gateway StockList Demo Service]()
+* [Lightstreamer JMS Gateway StockList Demo Service for Java](https://github.com/Weswit/Lightstreamer-JMS-example-StockList-service-java)
 
 ## Similar demo clients that may interest you ##
 
