@@ -1,6 +1,6 @@
 # Lightstreamer JMS Gateway StockList Demo Client for JavaScript #
 
-This project includes a front-end example for Lighstreamer JMS gateway.
+This project includes a front-end example for Lightstreamer JMS gateway.
 
 ## Basic StockList Demo ##
 
