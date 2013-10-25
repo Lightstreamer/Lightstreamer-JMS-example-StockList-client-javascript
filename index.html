@@ -247,41 +247,48 @@
 				// Start the connection
 				conn.start();
 
-				// Send messages to Demo Services, it will start publishing
-				// new values on the stocks topic
-				var queueSession= conn.createSession(false, "AUTO_ACK");
-				var queue= queueSession.createQueue("stocksQueue");
-				var producer= queueSession.createProducer(queue, null);
+				// Wait a moment before subscribing to avoid the subscribe
+				// message to get to the service before the topic subscription
+				// is actually started
+				setTimeout(function() {
 
-				var msg= queueSession.createTextMessage("subscribeitem1_1");
-				producer.send(msg);
+					// Send messages to Demo Services, it will start publishing
+					// new values on the stocks topic
+					var queueSession= conn.createSession(false, "AUTO_ACK");
+					var queue= queueSession.createQueue("stocksQueue");
+					var producer= queueSession.createProducer(queue, null);
 
-				msg= queueSession.createTextMessage("subscribeitem2_2");
-				producer.send(msg);
+					var msg= queueSession.createTextMessage("subscribeitem1_1");
+					producer.send(msg);
 
-				msg= queueSession.createTextMessage("subscribeitem3_3");
-				producer.send(msg);
+					msg= queueSession.createTextMessage("subscribeitem2_2");
+					producer.send(msg);
 
-				msg= queueSession.createTextMessage("subscribeitem4_4");
-				producer.send(msg);
+					msg= queueSession.createTextMessage("subscribeitem3_3");
+					producer.send(msg);
 
-				msg= queueSession.createTextMessage("subscribeitem5_5");
-				producer.send(msg);
+					msg= queueSession.createTextMessage("subscribeitem4_4");
+					producer.send(msg);
 
-				msg= queueSession.createTextMessage("subscribeitem6_6");
-				producer.send(msg);
+					msg= queueSession.createTextMessage("subscribeitem5_5");
+					producer.send(msg);
 
-				msg= queueSession.createTextMessage("subscribeitem7_7");
-				producer.send(msg);
+					msg= queueSession.createTextMessage("subscribeitem6_6");
+					producer.send(msg);
 
-				msg= queueSession.createTextMessage("subscribeitem8_8");
-				producer.send(msg);
+					msg= queueSession.createTextMessage("subscribeitem7_7");
+					producer.send(msg);
 
-				msg= queueSession.createTextMessage("subscribeitem9_9");
-				producer.send(msg);
+					msg= queueSession.createTextMessage("subscribeitem8_8");
+					producer.send(msg);
 
-				msg= queueSession.createTextMessage("subscribeitem10_10");
-				producer.send(msg);
+					msg= queueSession.createTextMessage("subscribeitem9_9");
+					producer.send(msg);
+
+					msg= queueSession.createTextMessage("subscribeitem10_10");
+					producer.send(msg);
+
+				}, 500);
 
 			}, function(errorCode, errorMessage) {
 
