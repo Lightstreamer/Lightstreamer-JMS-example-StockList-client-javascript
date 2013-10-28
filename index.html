@@ -232,7 +232,7 @@
 					onMessage: function(message) {
 
 						// Message received
-						var feedMessage= message.body;
+						var feedMessage= message.getObject();
 						if (feedMessage.currentValues == undefined)
 							return;
 
