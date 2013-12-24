@@ -9,7 +9,7 @@ This page uses the <b>JMS JS Client API for Lightstreamer</b> on top of <b>JavaS
 
 Check out the sources for further explanations.
 
-<!-- END DESCRIPTION xxxxx -->
+<!-- END DESCRIPTION lightstreamer-jms-example-stocklist-client-javascript -->
 # Deploy #
 
 Before you can run the demo of this project some dependencies need to be solved:
