@@ -1,7 +1,6 @@
 # Lightstreamer JMS Gateway - Basic Stock-List Demo - HTML Client #
 
 <!-- START DESCRIPTION lightstreamer-jms-example-stocklist-client-javascript -->
-<!-- END DESCRIPTION xxxxx -->
 
 This project includes a front-end example for Lightstreamer JMS gateway.
 
@@ -10,6 +9,7 @@ This page uses the <b>JMS JS Client API for Lightstreamer</b> on top of <b>JavaS
 
 Check out the sources for further explanations.
 
+<!-- END DESCRIPTION xxxxx -->
 # Deploy #
 
 Before you can run the demo of this project some dependencies need to be solved:
@@ -51,8 +51,10 @@ Please refer to Lightstreamer web site [download page](http://www.lightstreamer.
 
 ## Lightstreamer back-end Service needed by this demo client ##
 
+<!-- START RELATED_ENTRIES -->
 * [Lightstreamer JMS Gateway - Basic Chat Demo - Java (JMS) Service](https://github.com/Weswit/Lightstreamer-JMS-example-Chat-service-java)
 
+<!-- END RELATED_ENTRIES -->
 ## Similar demo clients that may interest you ##
 
 * [Lightstreamer JMS Gateway - Basic Chat Demo - HTML Client](https://github.com/Weswit/Lightstreamer-JMS-example-Chat-client-javascript)
