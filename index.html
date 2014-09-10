@@ -25,8 +25,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <title>Lightstreamer :: JMS Stock-List Demo</title>
   <link rel="stylesheet" type="text/css" href="css/table.css" />
-  <script src="require.js"></script>
-  <script src="lightstreamer.js"></script>
+  <script src="http://demos.lightstreamer.com/commons/require.js"></script>
+  <script src="http://demos.lightstreamer.com/commons/lightstreamer.js"></script>
   <script src="lightstreamer-jms.js"></script>
 </head>
 
@@ -203,7 +203,7 @@
 
 	<!-- Application code -->
 	<script type="text/javascript">
-		require(["ConnectionFactory", "StaticGrid", "StatusWidget"], function(ConnectionFactory, StaticGrid, StatusWidget) {
+		require(["ConnectionFactory", "./grid", "StatusWidget"], function(ConnectionFactory, grid, StatusWidget) {
 			ConnectionFactory.createConnection(function(conn) {
 
 				// Connection succeeded, topic subscription
@@ -211,36 +211,22 @@
 				var topic= topicSession.createTopic("stocksTopic");
 				var consumer= topicSession.createConsumer(topic, null);
 
-				// Create static grid to display values
-				var stocksGrid= new StaticGrid("stocks", true);
-				stocksGrid.setAutoCleanBehavior(true, false);
-				stocksGrid.addListener({
-				  onVisualUpdate: function(key, info) {
-					if (info == null) {
-
-					  // Cleaning
-					  return;
-					}
-
-					var cold= (key.substring(4) % 2 == 1) ? "#eeeeee" : "#ddddee";
-					info.setAttribute("yellow", cold, "backgroundColor");
-				  }
-				});
-
+				
 				// Add listener to message consumer
 				consumer.setMessageListener({
 					onMessage: function(message) {
 
 						// Message received
 						var feedMessage= message.getObject();
-						if (feedMessage.currentValues == undefined)
+						if (!feedMessage.currentValues) {
 							return;
+						}
 
 						var key= feedMessage.itemName;
 						var values= feedMessage.currentValues;
 
-						// Update the static grid
-						stocksGrid.updateRow(key, values);
+						// Update the view with the received data
+						grid.updateRow(key, values);
 					}
 				});
 
@@ -257,7 +243,7 @@
 					var queueSession= conn.createSession(false, "AUTO_ACK");
 					var queue= queueSession.createQueue("stocksQueue");
 					var producer= queueSession.createProducer(queue, null);
-
+					
 					var msg= queueSession.createTextMessage("subscribeitem1_1");
 					producer.send(msg);
 
