@@ -201,95 +201,95 @@
     </table>
     <div class="disc">Simulated market data.</div>
 
-	<!-- Application code -->
-	<script type="text/javascript">
-		require(["ConnectionFactory", "./grid", "StatusWidget"], function(ConnectionFactory, grid, StatusWidget) {
-			ConnectionFactory.createConnection(function(conn) {
+  <!-- Application code -->
+  <script type="text/javascript">
+    require(["ConnectionFactory", "./grid", "StatusWidget"], function(ConnectionFactory, grid, StatusWidget) {
+      ConnectionFactory.createConnection(function(conn) {
 
-				// Connection succeeded, topic subscription
-				var topicSession= conn.createSession(false, "PRE_ACK");
-				var topic= topicSession.createTopic("stocksTopic");
-				var consumer= topicSession.createConsumer(topic, null);
+        // Connection succeeded, topic subscription
+        var topicSession= conn.createSession(false, "PRE_ACK");
+        var topic= topicSession.createTopic("stocksTopic");
+        var consumer= topicSession.createConsumer(topic, null);
 
-				
-				// Add listener to message consumer
-				consumer.setMessageListener({
-					onMessage: function(message) {
+        
+        // Add listener to message consumer
+        consumer.setMessageListener({
+          onMessage: function(message) {
 
-						// Message received
-						var feedMessage= message.getObject();
-						if (!feedMessage.currentValues) {
-							return;
-						}
+            // Message received
+            var feedMessage= message.getObject();
+            if (!feedMessage.currentValues) {
+              return;
+            }
 
-						var key= feedMessage.itemName;
-						var values= feedMessage.currentValues;
+            var key= feedMessage.itemName;
+            var values= feedMessage.currentValues;
 
-						// Update the view with the received data
-						grid.updateRow(key, values);
-					}
-				});
+            // Update the view with the received data
+            grid.updateRow(key, values);
+          }
+        });
 
-				// Start the connection
-				conn.start();
+        // Start the connection
+        conn.start();
 
-				// Wait a moment before subscribing to avoid the subscribe
-				// message to get to the service before the topic subscription
-				// is actually started
-				setTimeout(function() {
+        // Wait a moment before subscribing to avoid the subscribe
+        // message to get to the service before the topic subscription
+        // is actually started
+        setTimeout(function() {
 
-					// Send messages to Demo Services, it will start publishing
-					// new values on the stocks topic
-					var queueSession= conn.createSession(false, "AUTO_ACK");
-					var queue= queueSession.createQueue("stocksQueue");
-					var producer= queueSession.createProducer(queue, null);
-					
-					var msg= queueSession.createTextMessage("subscribeitem1_1");
-					producer.send(msg);
+          // Send messages to Demo Services, it will start publishing
+          // new values on the stocks topic
+          var queueSession= conn.createSession(false, "AUTO_ACK");
+          var queue= queueSession.createQueue("stocksQueue");
+          var producer= queueSession.createProducer(queue, null);
+          
+          var msg= queueSession.createTextMessage("subscribeitem1_1");
+          producer.send(msg);
 
-					msg= queueSession.createTextMessage("subscribeitem2_2");
-					producer.send(msg);
+          msg= queueSession.createTextMessage("subscribeitem2_2");
+          producer.send(msg);
 
-					msg= queueSession.createTextMessage("subscribeitem3_3");
-					producer.send(msg);
+          msg= queueSession.createTextMessage("subscribeitem3_3");
+          producer.send(msg);
 
-					msg= queueSession.createTextMessage("subscribeitem4_4");
-					producer.send(msg);
+          msg= queueSession.createTextMessage("subscribeitem4_4");
+          producer.send(msg);
 
-					msg= queueSession.createTextMessage("subscribeitem5_5");
-					producer.send(msg);
+          msg= queueSession.createTextMessage("subscribeitem5_5");
+          producer.send(msg);
 
-					msg= queueSession.createTextMessage("subscribeitem6_6");
-					producer.send(msg);
+          msg= queueSession.createTextMessage("subscribeitem6_6");
+          producer.send(msg);
 
-					msg= queueSession.createTextMessage("subscribeitem7_7");
-					producer.send(msg);
+          msg= queueSession.createTextMessage("subscribeitem7_7");
+          producer.send(msg);
 
-					msg= queueSession.createTextMessage("subscribeitem8_8");
-					producer.send(msg);
+          msg= queueSession.createTextMessage("subscribeitem8_8");
+          producer.send(msg);
 
-					msg= queueSession.createTextMessage("subscribeitem9_9");
-					producer.send(msg);
+          msg= queueSession.createTextMessage("subscribeitem9_9");
+          producer.send(msg);
 
-					msg= queueSession.createTextMessage("subscribeitem10_10");
-					producer.send(msg);
+          msg= queueSession.createTextMessage("subscribeitem10_10");
+          producer.send(msg);
 
-				}, 500);
+        }, 500);
 
-			}, function(errorCode, errorMessage) {
+      }, function(errorCode, errorMessage) {
 
-				// Connection failed, show the error
-				alert("Error: " + errorCode + " " + errorMessage);
+        // Connection failed, show the error
+        alert("Error: " + errorCode + " " + errorMessage);
 
-			}, "http://localhost:8080/", "JMS", "HornetQ",  // Change data adapter here
-				null, null, function(lsClient) {
+      }, "http://localhost:8080/", "JMS", "HornetQ",  // Change data adapter here
+        null, null, function(lsClient) {
 
-				// Enable connection sharing and status widget (optional)
-				lsClient.connectionSharing.enableSharing("JMSDemoCommonConnection", "ATTACH", "CREATE");
-				lsClient.addListener(new StatusWidget("left", "0px", true));
-			});
-		});
-	</script>
+        // Enable connection sharing and status widget (optional)
+        lsClient.connectionSharing.enableSharing("JMSDemoCommonConnection", "ATTACH", "CREATE");
+        lsClient.addListener(new StatusWidget("left", "0px", true));
+      });
+    });
+  </script>
 
   </div>
 
