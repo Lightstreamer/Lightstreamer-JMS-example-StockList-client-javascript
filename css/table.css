@@ -40,37 +40,25 @@
 	font-weight: normal; 
 	text-align: left; 
 }
-.stockNameOdd {
-  font-family: Verdana, Arial, Helvetica, Sans-serif;
-  font-size: 8pt;
-  color: #000080;
-  background-color: #eeeeee;
-  font-weight: bold;
-  text-align: left;
+tr:nth-child(2n+2) {
+  background: #ddddee;
+} 
+tr:nth-child(2n+3) {
+  background: #eeeeee;
 }
-.stockNameEven {
-  font-family: Verdana, Arial, Helvetica, Sans-serif;
-  font-size: 8pt;
-  color: #000080;
-  background-color: #ddddee;
-  font-weight: bold;
-  text-align: left;
-}
-.coldOdd {
-  font-family: Verdana, Arial, Helvetica, Sans-serif;
+[data-field] {
+	font-family: Verdana, Arial, Helvetica, Sans-serif;
   font-size: 8pt;
   color: #000000;
-  background-color: #eeeeee;
   font-weight: normal;
   text-align: right;
 }
-.coldEven {
-  font-family: Verdana, Arial, Helvetica, Sans-serif;
+[data-field="stock_name"] {
+	font-family: Verdana, Arial, Helvetica, Sans-serif;
   font-size: 8pt;
-  color: #000000;
-  background-color: #ddddee;
-  font-weight: normal;
-  text-align: right;
+  color: #000080;
+  font-weight: bold;
+  text-align: left;
 }
 #wrap {
   width: 766px;
