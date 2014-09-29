@@ -80,46 +80,48 @@
   <!-- Application code -->
   <script type="text/javascript">
     require(["TopicConnectionFactory", "./grid", "StatusWidget"], function(TopicConnectionFactory, grid, StatusWidget) {
-      TopicConnectionFactory.createTopicConnection(function(conn) {
-
-        // Connection succeeded, topic subscription
-        var topicSession= conn.createSession(false, "PRE_ACK");
-        var topic= topicSession.createTopic("stocksTopic");
-        var consumer= topicSession.createConsumer(topic, null);
-
-        
-        // Add listener to message consumer
-        consumer.setMessageListener({
-          onMessage: function(message) {
-
-            // Message received
-            var feedMessage= message.getObject();
-            if (!feedMessage.currentValues) {
-              return;
+      TopicConnectionFactory.createTopicConnection("http://localhost:8080/", "JMS", "HornetQ", null, null, {
+        onConnectionCreated: function(conn) {
+          // Connection succeeded, topic subscription
+          var topicSession= conn.createSession(false, "PRE_ACK");
+          var topic= topicSession.createTopic("stocksTopic");
+          var consumer= topicSession.createConsumer(topic, null);
+  
+          
+          // Add listener to message consumer
+          consumer.setMessageListener({
+            onMessage: function(message) {
+  
+              // Message received
+              var feedMessage= message.getObject();
+              if (!feedMessage.currentValues) {
+                return;
+              }
+  
+              var key= feedMessage.itemName;
+              var values= feedMessage.currentValues;
+  
+              // Update the view with the received data
+              grid.updateRow(key, values);
             }
+          });
+  
+          // Start the connection
+          conn.start();
 
-            var key= feedMessage.itemName;
-            var values= feedMessage.currentValues;
+        },
+        onConnectionFailed: function(errorCode, errorMessage) {
 
-            // Update the view with the received data
-            grid.updateRow(key, values);
-          }
-        });
-
-        // Start the connection
-        conn.start();
-
-      }, function(errorCode, errorMessage) {
-
-        // Connection failed, show the error
-        alert("Error: " + errorCode + " " + errorMessage);
-
-      }, "http://localhost:8080/", "JMS", "HornetQ",  // Change data adapter here
-        null, null, function(lsClient) {
-
-        // Enable connection sharing and status widget (optional)
-        lsClient.connectionSharing.enableSharing("JMSDemoCommonConnection", "ATTACH", "CREATE");
-        lsClient.addListener(new StatusWidget("left", "0px", true));
+          // Connection failed, show the error
+          alert("Error: " + errorCode + " " + errorMessage);
+  
+        }, 
+        onLSClient: function(lsClient) {
+  
+          // Enable connection sharing and status widget (optional)
+          lsClient.connectionSharing.enableSharing("JMSDemoCommonConnection", "ATTACH", "CREATE");
+          lsClient.addListener(new StatusWidget("left", "0px", true));
+        }
       });
     });
   </script>
