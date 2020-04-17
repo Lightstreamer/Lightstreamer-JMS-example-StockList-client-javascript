@@ -25,10 +25,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <title>Lightstreamer :: JMS Stock-List Demo</title>
   <link rel="stylesheet" type="text/css" href="css/table.css" />
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.9/require.min.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="http://demos.lightstreamer.com/commons/lightstreamer-widgets.js"></script>
-  <script src="lightstreamer-jms.js"></script>
+  <script src="https://demos.lightstreamer.com/commons/lightstreamer-widgets.js"></script>
+  <script src="https://unpkg.com/lightstreamer-jms-web-client"></script>
 </head>
 
 <body>
@@ -78,57 +77,10 @@
     </table>
     <div class="disc">Simulated market data.</div>
 
-  <!-- Application code -->
-  <script type="text/javascript">
-    require(["TopicConnectionFactory", "./grid", "StatusWidget"], function(TopicConnectionFactory, grid, StatusWidget) {
-      TopicConnectionFactory.createTopicConnection("http://localhost:8080/", "HornetQ", null, null, {
-        onConnectionCreated: function(conn) {
-          // Connection succeeded, topic subscription
-          var topicSession= conn.createSession(false, "PRE_ACK");
-          var topic= topicSession.createTopic("stocksTopic");
-          var consumer= topicSession.createConsumer(topic, null);
-
-
-          // Add listener to message consumer
-          consumer.setMessageListener({
-            onMessage: function(message) {
-
-              // Message received
-              var feedMessage= message.getObject();
-              if (!feedMessage.currentValues) {
-                return;
-              }
-
-              var key= feedMessage.itemName;
-              var values= feedMessage.currentValues;
-
-              // Update the view with the received data
-              grid.updateRow(key, values);
-            }
-          });
-
-          // Start the connection
-          conn.start();
-
-        },
-        onConnectionFailed: function(errorCode, errorMessage) {
-
-          // Connection failed, show the error
-          alert("Error: " + errorCode + " " + errorMessage);
-
-        },
-        onLSClient: function(lsClient) {
-
-          // Enable connection sharing and status widget (optional)
-          lsClient.connectionSharing.enableSharing("JMSDemoCommonConnection", "ATTACH", "CREATE");
-          lsClient.addListener(new StatusWidget("left", "0px", true));
-        }
-      });
-    });
-  </script>
-
   </div>
 
+  <!-- Use the module -->
+  <script type="module" src="js/app.js"></script>
 </body>
 
 </html>
