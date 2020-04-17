@@ -2,7 +2,7 @@
 
 <!-- START DESCRIPTION lightstreamer-jms-example-stocklist-client-javascript -->
 
-This project includes a front-end example based on the Basic Stock-List Demo for Lightstreamer JMS Extender.
+This project includes a front-end example based on the Basic Stock-List Demo for Lightstreamer Server.
 
 ## Details
 
