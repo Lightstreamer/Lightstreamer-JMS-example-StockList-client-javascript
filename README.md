@@ -53,5 +53,5 @@ Depending on the browser in use, and on the security settings, you might also be
 
 ## Lightstreamer Compatibility Notes
 
-* Compatible with Lightstreamer JMS Extender JavaScript Client library since version 1.2 or newer.
-* Compatible with Lightstreamer JMS Extender since version 1.5 or newer.
+* Compatible with Lightstreamer JMS Extender SDK for Web Clients since version 2.0.0 or newer.
+* Compatible with Lightstreamer JMS Extender since version 2.0.0 or newer.
