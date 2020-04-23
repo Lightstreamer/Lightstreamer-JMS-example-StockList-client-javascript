@@ -26,11 +26,11 @@ Before you can run the demo of this project, some dependencies need to be solved
 * As the latest version of the Lightstreamer JMS Extender JavaScript library is always available through [unpkg](https://unpkg.com/lightstreamer-jms-web-client), it is hot-linked in the html page.
 
 
-Now, you need to configure the `index.html` of this example by specifying the name of the JMS connector you are going to use. By default, the demo will look for the **HornetQ** JMS connector, please refer to the related [Service project](https://github.com/Lightstreamer/Lightstreamer-JMS-example-StockList-service-java) for more details on the choice of a JMS broker to be used.
+Now, you need to configure the `index.html` of this example by specifying the name of the JMS connector you are going to use. By default, the demo will look for the **ActiveMQ** JMS connector, please refer to the related [Service project](https://github.com/Lightstreamer/Lightstreamer-JMS-example-StockList-service-java) for more details on the choice of a JMS broker to be used.
 To set the JMS connector name and the connection name, look where the connection is created:
 
 ```js
-  jms.TopicConnectionFactory.createTopicConnection("http://localhost:8080/", "HornetQ", null, null, {
+  jms.TopicConnectionFactory.createTopicConnection("http://localhost:8080/", "ActiveMQ", null, null, {
 ```
 
 To access the demo from a web browser, copy it somewhere under your root webserver directory. You can also add it to the JMS Extender internal web server pages under `JMSExtenderHome/pages` directory by copying it there with a folder name such as `StockListDemo_JMS`. Subsequently you may access it as: <i>http://_your_jms_extender_http_address_/StockListDemo_JMS/</i>.
