@@ -19,7 +19,7 @@
 
 import stocksGrid from './grid.js';
 
-jms.TopicConnectionFactory.createTopicConnection("http://localhost:8080/", "HornetQ", null, null, {
+jms.TopicConnectionFactory.createTopicConnection("http://localhost:8080/", "ActiveMQ", null, null, {
     onConnectionCreated: function (conn) {
         // Connection succeeded, topic subscription
         var topicSession = conn.createSession(false, "PRE_ACK");
