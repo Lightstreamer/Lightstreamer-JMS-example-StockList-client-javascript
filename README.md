@@ -33,7 +33,7 @@ To set the JMS connector name and the connection name, look where the connection
   jms.TopicConnectionFactory.createTopicConnection("http://localhost:8080/", "ActiveMQ", null, null, {
 ```
 
-To access the demo from a web browser, copy it somewhere under your root webserver directory. You can also add it to the JMS Extender internal web server pages under `JMSExtenderHome/pages` directory by copying it there with a folder name such as `StockListDemo_JMS`. Subsequently you may access it as: [http://_your_jms_extender_http_address_/StockListDemo_JMS/](http://_your_jms_extender_http_address_/StockListDemo_JMS/).
+To access the demo from a web browser, copy it somewhere under your root webserver directory. You can also add it to the JMS Extender internal web server pages under `<JMS_EXTENDER_HOME>/pages` directory by copying it there with a folder name such as `StockListDemo_JMS`. Subsequently you may access it as: [http://_your_jms_extender_http_address_/StockListDemo_JMS/](http://_your_jms_extender_http_address_/StockListDemo_JMS/).
 Depending on the browser in use, and on the security settings, you might also be able to launch the index.html file directly from the file system.
 
 
