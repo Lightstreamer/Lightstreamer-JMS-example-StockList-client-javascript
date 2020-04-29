@@ -56,8 +56,6 @@ jms.TopicConnectionFactory.createTopicConnection("http://localhost:8080/", "Acti
   },
 
   onLSClient: function (lsClient) {
-    // Enable connection sharing and status widget (optional)
-    lsClient.connectionSharing.enableSharing("JMSDemoCommonConnection", "ATTACH", "CREATE");
     lsClient.addListener(new StatusWidget("left", "0px", true));
   }
 });
