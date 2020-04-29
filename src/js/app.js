@@ -20,44 +20,44 @@
 import stocksGrid from './grid.js';
 
 jms.TopicConnectionFactory.createTopicConnection("http://localhost:8080/", "ActiveMQ", null, null, {
-    onConnectionCreated: function (conn) {
-        // Connection succeeded, topic subscription
-        var topicSession = conn.createSession(false, "PRE_ACK");
-        var topic = topicSession.createTopic("stocksTopic");
-        var consumer = topicSession.createConsumer(topic, null);
+  onConnectionCreated: function (conn) {
+    // Connection succeeded, topic subscription
+    var topicSession = conn.createSession(false, "PRE_ACK");
+    var topic = topicSession.createTopic("stocksTopic");
+    var consumer = topicSession.createConsumer(topic, null);
 
-        // Add listener to message consumer
-        consumer.setMessageListener({
-            onMessage: function (message) {
+    // Add listener to message consumer
+    consumer.setMessageListener({
+      onMessage: function (message) {
 
-                // Message received
-                var feedMessage = message.getObject();
-                if (!feedMessage.currentValues) {
-                    return;
-                }
+        // Message received
+        var feedMessage = message.getObject();
+        if (!feedMessage.currentValues) {
+          return;
+        }
 
-                var key = feedMessage.itemName;
-                var values = feedMessage.currentValues;
+        var key = feedMessage.itemName;
+        var values = feedMessage.currentValues;
 
-                // Update the view with the received data
-                stocksGrid.updateRow(key, values);
-            }
-        });
+        // Update the view with the received data
+        stocksGrid.updateRow(key, values);
+      }
+    });
 
-        // Start the connection
-        conn.start();
-    },
+    // Start the connection
+    conn.start();
+  },
 
-    onConnectionFailed: function (errorCode, errorMessage) {
+  onConnectionFailed: function (errorCode, errorMessage) {
 
-        // Connection failed, show the error
-        alert("Error: " + errorCode + " " + errorMessage);
+    // Connection failed, show the error
+    alert("Error: " + errorCode + " " + errorMessage);
 
-    },
+  },
 
-    onLSClient: function (lsClient) {
-        // Enable connection sharing and status widget (optional)
-        lsClient.connectionSharing.enableSharing("JMSDemoCommonConnection", "ATTACH", "CREATE");
-        lsClient.addListener(new StatusWidget("left", "0px", true));
-    }
+  onLSClient: function (lsClient) {
+    // Enable connection sharing and status widget (optional)
+    lsClient.connectionSharing.enableSharing("JMSDemoCommonConnection", "ATTACH", "CREATE");
+    lsClient.addListener(new StatusWidget("left", "0px", true));
+  }
 });
