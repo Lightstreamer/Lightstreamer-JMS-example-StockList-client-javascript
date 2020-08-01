@@ -37,7 +37,7 @@ Depending on the browser in use, and on the security settings, you might also be
 
 ## See Also
 
-### Lightstreamer JMS Extender Service Needed by This Demo Client
+### JMS Extender Service Needed by This Demo Client
 
 <!-- START RELATED_ENTRIES -->
 * [Lightstreamer JMS Extender - Stock-List Demo - Java (JMS) Service](https://github.com/Lightstreamer/Lightstreamer-JMS-example-StockList-service-java)
