@@ -2,7 +2,9 @@
 
 <!-- START DESCRIPTION lightstreamer-jms-example-stocklist-client-javascript -->
 
-This project contains a sample Web application that shows how the [_Lightstreamer JMS Extender JavaScript Client Library_](https://www.npmjs.com/package/lightstreamer-jms-web-client) can be used to connect to Lightstreamer JMS Extender.
+This project contains a sample Web application that shows how the [_Lightstreamer JMS Extender JavaScript Client Library_](https://www.npmjs.com/package/lightstreamer-jms-web-client) can be used to connect to Lightstreamer JMS Extender.  
+This projects is the JMS Extender version of the [Lightstreamer - Basic Stock-List Demo - HTML Client](https://github.com/Lightstreamer/Lightstreamer-example-StockList-client-javascript).
+
 
 ![Screenshot](screen-large.png)
 
